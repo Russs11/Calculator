@@ -1,0 +1,12 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    
+    width: 300px;
+    height: 500px;
+    background: #000;
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #4f4f4f;
+    padding: 18px;
+}
