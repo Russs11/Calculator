@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <CalcScreen>0</CalcScreen>
+        <CalcScreen>56566</CalcScreen>
       <Btns />
       </Container>
     </div>
