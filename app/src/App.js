@@ -8,11 +8,9 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <CalcScreen/>
+        <CalcScreen>0</CalcScreen>
       <Btns />
       </Container>
-      
-      
     </div>
   );
 }
