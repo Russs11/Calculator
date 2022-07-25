@@ -4,6 +4,7 @@
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 7px;
     justify-items: center;
+    
 }
 .btn {
     display: grid;
@@ -16,6 +17,8 @@
     border-radius: 50%;
     font-size: 22px;
     font-weight: 600;
+    user-select:none;
+    cursor: pointer;
     
 }
 .btn.bg-grey {
