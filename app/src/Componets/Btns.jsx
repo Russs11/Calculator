@@ -12,7 +12,7 @@ const btns = ({ btnNumClickHandler, allClear, operatorClickHandler, equallyClick
             <div className="btn seven " onClick={() => { btnNumClickHandler(7) }}>7</div>
             <div className="btn eight" onClick={() => { btnNumClickHandler(8) }}>8</div>
             <div className="btn nine" onClick={() => { btnNumClickHandler(9) }}>9</div>
-            <div className="btn multiply bg-orange">X</div>
+            <div className="btn multiply bg-orange" onClick={() => { operatorClickHandler("x") }}>x</div>
 
             <div className="btn four" onClick={() => { btnNumClickHandler(4) }}>4</div>
             <div className="btn five" onClick={() => { btnNumClickHandler(5) }}>5</div>

@@ -12,13 +12,13 @@ function App() {
   let operand2 = 0
   let operator = ""
   function btnNumClickHandler(num) {
-    
+
     if (operator === "") {
-    if (operand === 0) {
-      operand = num
-    } else {
-      operand = operand * 10 + num
-    }
+      if (operand === 0) {
+        operand = num
+      } else {
+        operand = operand * 10 + num
+      }
     }
     if (operator !== "") {
       if (operand2 === 0) {
@@ -29,8 +29,8 @@ function App() {
     }
     console.log("operand", operand);
     console.log("operand2", operand2);
-    
-  
+
+
   }
   function operatorClickHandler(oper) {
     operator = oper
@@ -43,12 +43,20 @@ function App() {
   }
   function equallyClickHandler() {
     if (operator === "+") {
-      let res = operand + operand2
-      console.log(res);
+      operand = operand + operand2
       operator = ""
-      operand = 0
       operand2 = 0
+
+      console.log("res", operand);
     }
+    if (operator === "x") {
+      operand = operand * operand2
+      console.log("res", operand);
+      operator = ""
+      operand2 = 0
+      
+   }
+
   }
 
   return (
