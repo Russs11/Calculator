@@ -8,22 +8,26 @@ import { useState } from 'react'
 
 
 function App() {
-  // let operand = 0
-  // let operand2 = 0
-  // let operator = ""
-  // let numAfterDot = ""
   const [operand1, setOperand1] = useState(0)
   const [operand2, setOperand2] = useState("")
   const [operator, setOperator] = useState("")
-  const [result, setResult] = useState(0)
+  const [result, setResult] = useState("")
   const [numAfterDot, setNumAfterDot] = useState("")
 
   function allClear() {
-    setOperand1(0);
+    setOperand1("");
     setOperand2("");
     setOperator("");
     setResult("");
     setNumAfterDot("");
+  }
+
+
+
+  function btnDotClickHandler(sign) {
+    if (sign === ".") {
+      setNumAfterDot(sign)
+    }
   }
   function btnNumClickHandler(num) {
     // if (operator === "") {
@@ -34,68 +38,48 @@ function App() {
     //     operand = operand * 10 + num
     //   }
     // }
-    
+
     // if (operator !== "") {
-      //   if (operand2 === 0) {
-        //     operand2 = num
-        //   }
-        //   else {
-          //     operand2 = operand2 * 10 + num
-          //   }
-          // }
-          // if (numAfterDot === ".") {
-            //   operand2 = operand2 / 10
-            
-            // }
-            // console.log("operand", operand);
-            // console.log("operand2", operand2);
-            
-            if (operator === "") {
-              setOperand1(operand1 + num);
-            } else {
-              setOperand2(operand2 + num);
-            }
-            if (numAfterDot === ".") {
-              setOperand1((operand1 / 10) + num)
-            }
-          }
+    //   if (operand2 === 0) {
+    //     operand2 = num
+    //   }
+    //   else {
+    //     operand2 = operand2 * 10 + num
+    //   }
+    // }
+    // if (numAfterDot === ".") {
+    //   operand2 = operand2 / 10
 
+    // }
+    // console.log("operand", operand);
+    // console.log("operand2", operand2);
 
-
-
-  function btnDotClickHandler(sign) {
-    if (sign === ".") {
-      setNumAfterDot(sign)
+    if (operator === "") {
+      setOperand1(operand1 + num);
+    } else {
+      setOperand2(operand2 + num);
+    }
+    if (numAfterDot === ".") {
+      setOperand1((operand1 / 10) + num)
     }
   }
+
+
+
+
 
   function operatorClickHandler(oper) {
     setOperator(oper)
   }
 
-  // function equallyClickHandler() {
-  //   switch (operator) {
-  //     case "+":
-  //       setResult(Number(operand1) + Number(operand2));
-  //       break;
-  //     case "-":
-  //       setResult(Number(operand1) - Number(operand2));
-  //       break;
-  //     case "x":
-  //       setResult(Number(operand1) * Number(operand2));
-  //       break;
-  //     case "/":
-  //       setResult(Number(operand1) / Number(operand2));
-  //       break;
-  //   }
-  // }
+
   function equallyClickHandler() {
     if (operator === "+") {
-
       setResult(Number(operand1) + Number(operand2))
       // numAfterDot = ""
-        setOperator("")
-        setOperand2(0)
+      setOperand1(result)
+      setOperator("")
+      setOperand2("")
     }
     if (operator === "-") {
       setResult(Number(operand1) - Number(operand2))
