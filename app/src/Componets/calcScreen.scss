@@ -1,19 +1,22 @@
-.calc-screen{
-    height: 125px;
-    padding: 10px;
+.calc-screen {
     display: grid;
+    height: 130px;
+    padding: 10px;
     justify-items: end;
     align-items: end;
-    font-size: 3rem;
     color: #fff;
-   
+    font-size: 120px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: right;
 }
+
 .calc-screen .previous-operand {
-    
-    font-size: 1.5rem;
+
+    font-size: 35px;
 }
 
 .calc-screen .current-operand {
-    
-    font-size: 2.5rem;
+
+    font-size: 60px;
 }

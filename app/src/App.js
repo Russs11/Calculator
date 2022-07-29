@@ -8,17 +8,16 @@ import { useState } from 'react'
 
 
 function App() {
-  const [operand1, setOperand1] = useState(0)
+  const [operand1, setOperand1] = useState("")
   const [operand2, setOperand2] = useState("")
   const [operator, setOperator] = useState("")
-  const [result, setResult] = useState("")
+
   const [numAfterDot, setNumAfterDot] = useState("")
 
   function allClear() {
     setOperand1("");
     setOperand2("");
     setOperator("");
-    setResult("");
     setNumAfterDot("");
   }
 
@@ -30,37 +29,15 @@ function App() {
     }
   }
   function btnNumClickHandler(num) {
-    // if (operator === "") {
-    //   if (operand === 0) {
-    //     operand = num
-    //   }
-    //   else {
-    //     operand = operand * 10 + num
-    //   }
-    // }
-
-    // if (operator !== "") {
-    //   if (operand2 === 0) {
-    //     operand2 = num
-    //   }
-    //   else {
-    //     operand2 = operand2 * 10 + num
-    //   }
-    // }
-    // if (numAfterDot === ".") {
-    //   operand2 = operand2 / 10
-
-    // }
-    // console.log("operand", operand);
-    // console.log("operand2", operand2);
-
     if (operator === "") {
-      setOperand1(operand1 + num);
+      setOperand1(operand1 + Number(num));
     } else {
       setOperand2(operand2 + num);
     }
     if (numAfterDot === ".") {
-      setOperand1((operand1 / 10) + num)
+      if (operand1.includes("."))return; 
+      setOperand1(operand1 + "." + Number(num));
+      return;
     }
   }
 
@@ -75,32 +52,31 @@ function App() {
 
   function equallyClickHandler() {
     if (operator === "+") {
-      setResult(Number(operand1) + Number(operand2))
+      setOperand1(Number(operand1) + Number(operand2))
       // numAfterDot = ""
-      setOperand1(result)
       setOperator("")
       setOperand2("")
     }
     if (operator === "-") {
-      setResult(Number(operand1) - Number(operand2))
+      setOperand1(Number(operand1) - Number(operand2))
       setOperator("")
-      setOperand2(0)
+      setOperand2("")
     }
 
     if (operator === "x") {
-      setResult(Number(operand1) * Number(operand2))
+      setOperand1(Number(operand1) * Number(operand2))
       setOperator("")
-      setOperand2(0)
+      setOperand2("")
     }
 
     if (operator === "/") {
-      if (operand2 === 0 || operand1 === Infinity) {
+      if (operand2 === 0) {
         allClear()
-        setResult("Ошибка");
+        setOperand1("Ошибка");
       }
-      setResult(Number(operand1) / Number(operand2))
+      setOperand1(Number(operand1) / Number(operand2))
       setOperator("")
-      setOperand2(0)
+      setOperand2("")
     }
 
   }
@@ -110,7 +86,7 @@ function App() {
       <Container>
         <CalcScreen>
           <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
-          <div className="current-operand">{result ? result : (!operator ? operand1 : operand2)}</div>
+          <div className="current-operand">{operand1 ? operand1 : (!operator ? operand1 : operand2)}</div>
         </CalcScreen>
         <Btns btnNumClickHandler={btnNumClickHandler}
           allClear={allClear}
