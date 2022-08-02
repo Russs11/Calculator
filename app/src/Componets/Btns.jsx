@@ -1,12 +1,12 @@
 import React from 'react';
 import "./btns.scss"
 
-const btns = ({ btnNumClickHandler, allClear, operatorClickHandler, equallyClickHandler, btnDotClickHandler }) => {
+const btns = ({ btnNumClickHandler, allClear, operatorClickHandler, equallyClickHandler, btnDotClickHandler, }) => {
     return (
         <div className="btns">
             <div className="btn ac bg-grey" onClick={allClear}>AC</div>
             <div className="btn plus-minus bg-grey">+/-</div>
-            <div className="btn percent bg-grey">%</div>
+            <div className="btn percent bg-grey" onClick={() => { operatorClickHandler("%") }}>%</div>
             <div className="btn devide" onClick={() => { operatorClickHandler("/") }}>/</div>
 
             <div className="btn seven " onClick={() => { btnNumClickHandler("7") }}>7</div>
