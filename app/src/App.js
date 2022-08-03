@@ -11,15 +11,14 @@ function App() {
   const [operand1, setOperand1] = useState("0")
   const [operand2, setOperand2] = useState("")
   const [operator, setOperator] = useState("")
-
   const [numAfterDot, setNumAfterDot] = useState("")
-
+  const [percent, setPercent] = useState("")
   function allClear() {
     setOperand1("0");
     setOperand2("");
     setOperator("");
     setNumAfterDot("");
-
+    setPercent("");
   }
 
 
@@ -37,7 +36,7 @@ function App() {
     } else if (operator !== "") {
       setOperand2(parseFloat(operand2 + num).toString());
     }
-
+    
     if (numAfterDot === "." && operator === "") {
       if (operand1.includes(".")) return;
       setOperand1((operand1 + "." + num).toString());
@@ -61,32 +60,50 @@ function App() {
   }
   function contentClickHandler(content) {
     if (content === "%") {
+      setPercent("%")
+    }
+    
+    if (percent === "%" && operator === "") {
       setOperand1(Number(operand1) / 100).toString()
-      setOperator("")
-      setOperand2("")
       return
     }
-    if (content === "+/-") {
+    
+
+    if (content === "+/-" && operator === "") {
       setOperand1((operand1 * -1).toString());
-      return; 
+      return;
     }
-}
+    if (content === "+/-" && operator !== "") {
+      setOperand2((operand2 * -1).toString());
+      return;
+    }
+  }
 
   function equallyClickHandler() {
     if (operator === "+") {
       setOperand1(Number(operand1) + Number(operand2))
       setOperator("")
       setOperand2("")
-      if (operator === "-" && operand1 !== "") {
-        setOperand1(Number(operand1) - Number(operand2))
-        setOperator("")
-        setOperand2("")
-      }
+      setPercent("")
+    } 
+
+    if (operator === "+" && percent === "%") {
+      setOperand1(Number(operand1) + Number(operand1) * Number(operand2)/ 100).toString()
+      setOperator("")
+      setOperand2("")
+      setPercent("")
     }
     if (operator === "-") {
       setOperand1(Number(operand1) - Number(operand2))
       setOperator("")
       setOperand2("")
+      setPercent("")
+    }
+    if (operator === "-" && percent === "%") {
+      setOperand1(Number(operand1) - Number(operand1) * Number(operand2) / 100).toString()
+      setOperator("")
+      setOperand2("")
+      setPercent("")
     }
 
     if (operator === "x") {
@@ -96,15 +113,15 @@ function App() {
     }
 
     if (operator === "/") {
-      if (operand2 === 0) {
-        allClear()
-        setOperand1("Ошибка");
+      if (operand2 === "0") {
+        setOperand2("Error");
+        return;
       }
       setOperand1(Number(operand1) / Number(operand2))
       setOperator("")
       setOperand2("")
     }
- 
+
   }
 
 
@@ -112,9 +129,8 @@ function App() {
     <div className="App">
       <Container>
         <CalcScreen>
-
           <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
-          <div className="current-operand">{(!operator ? operand1 : operand2)}</div>
+          <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div>
         </CalcScreen>
         <Btns btnNumClickHandler={btnNumClickHandler}
           allClear={allClear}
