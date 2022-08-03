@@ -56,7 +56,13 @@ function App() {
 
 
   function operatorClickHandler(oper) {
-    setOperator(oper)
+    if (operator === "") {
+      setOperator(oper)
+    } else {
+      equallyClickHandler()
+      setOperator(oper)
+    }
+
   }
   function contentClickHandler(content) {
     if (content === "%") {
