@@ -115,6 +115,8 @@ function App() {
     if (operator === "/") {
       if (operand2 === "0") {
         setOperand2("Error");
+        setOperand1("")
+        setOperator("")
         return;
       }
       setOperand1(Number(operand1) / Number(operand2))
@@ -129,8 +131,9 @@ function App() {
     <div className="App">
       <Container>
         <CalcScreen>
-          <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
-          <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div>
+          {/* <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
+          <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div> */}
+          <div className="current-operand">{operand1}{operator}{operand2}{percent}</div>
         </CalcScreen>
         <Btns btnNumClickHandler={btnNumClickHandler}
           allClear={allClear}
@@ -138,7 +141,6 @@ function App() {
           equallyClickHandler={equallyClickHandler}
           btnDotClickHandler={btnDotClickHandler}
           contentClickHandler={contentClickHandler}
-
         />
       </Container>
     </div>
