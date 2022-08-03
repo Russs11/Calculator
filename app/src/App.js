@@ -11,7 +11,7 @@ function App() {
   const [operand1, setOperand1] = useState("0")
   const [operand2, setOperand2] = useState("")
   const [operator, setOperator] = useState("")
-  
+
   const [numAfterDot, setNumAfterDot] = useState("")
 
   function allClear() {
@@ -19,10 +19,10 @@ function App() {
     setOperand2("");
     setOperator("");
     setNumAfterDot("");
-   
+
   }
 
-  
+
 
 
   function btnDotClickHandler(sign) {
@@ -30,6 +30,7 @@ function App() {
       setNumAfterDot(sign)
     }
   }
+
   function btnNumClickHandler(num) {
     if (operator === "") {
       setOperand1(parseFloat(operand1 + num).toString());
@@ -37,22 +38,18 @@ function App() {
       setOperand2(parseFloat(operand2 + num).toString());
     }
 
-    if (numAfterDot === ".") {
+    if (numAfterDot === "." && operator === "") {
       if (operand1.includes(".")) return;
       setOperand1((operand1 + "." + num).toString());
-      setNumAfterDot("")
-      return
-
+      setNumAfterDot("");
+      return;
     }
 
     if (numAfterDot === "." && operator !== "") {
       if (operand2.includes(".")) return;
       setOperand2((operand2 + "." + num).toString());
-      setNumAfterDot("")
-
+      setNumAfterDot("");
     }
-   
-
   }
 
 
@@ -62,14 +59,29 @@ function App() {
   function operatorClickHandler(oper) {
     setOperator(oper)
   }
-
+  function contentClickHandler(content) {
+    if (content === "%") {
+      setOperand1(Number(operand1) / 100).toString()
+      setOperator("")
+      setOperand2("")
+      return
+    }
+    if (content === "+/-") {
+      setOperand1((operand1 * -1).toString());
+      return; 
+    }
+}
 
   function equallyClickHandler() {
     if (operator === "+") {
       setOperand1(Number(operand1) + Number(operand2))
-      // numAfterDot = ""
       setOperator("")
       setOperand2("")
+      if (operator === "-" && operand1 !== "") {
+        setOperand1(Number(operand1) - Number(operand2))
+        setOperator("")
+        setOperand2("")
+      }
     }
     if (operator === "-") {
       setOperand1(Number(operand1) - Number(operand2))
@@ -92,14 +104,9 @@ function App() {
       setOperator("")
       setOperand2("")
     }
-    
-    if (operator === "%") {
-      setOperand1(Number(operand1) / 100).toString()
-      setOperator("")
-      setOperand2("")
-    }
-    }
-    
+ 
+  }
+
 
   return (
     <div className="App">
@@ -114,7 +121,8 @@ function App() {
           operatorClickHandler={operatorClickHandler}
           equallyClickHandler={equallyClickHandler}
           btnDotClickHandler={btnDotClickHandler}
-         
+          contentClickHandler={contentClickHandler}
+
         />
       </Container>
     </div>
