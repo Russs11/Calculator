@@ -9,6 +9,7 @@
     font-weight: 300;
     margin-bottom: 20px;
     text-align: right;
+    overflow: hidden;
 }
 
 .calc-screen .previous-operand {
@@ -18,5 +19,5 @@
 
 .calc-screen .current-operand {
 
-    font-size: 60px;
+    font-size: 63px;
 }

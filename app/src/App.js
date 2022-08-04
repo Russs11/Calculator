@@ -49,8 +49,11 @@ function App() {
       setOperand2((operand2 + "." + num).toString());
       setNumAfterDot("");
     }
+    
+    
   }
-
+  
+  
 
 
 
@@ -69,11 +72,10 @@ function App() {
       setPercent("%")
     }
     
-    if (content === "%" && operator === "") {
+    if (percent === "%" && operator === "") {
       setOperand1(Number(operand1) / 100).toString()
-      return;
+      return
     }
-    
     
 
     if (content === "+/-" && operator === "") {
@@ -138,9 +140,9 @@ function App() {
     <div className="App">
       <Container>
         <CalcScreen>
-          <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
-          <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div>
-          {/* <div className="current-operand">{operand1}{operator}{operand2}{percent}</div> */}
+          {/* <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
+          <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div> */}
+          <div className="current-operand">{operand1}{operator}{operand2}{percent}</div>
         </CalcScreen>
         <Btns btnNumClickHandler={btnNumClickHandler}
           allClear={allClear}
