@@ -50,7 +50,7 @@ function App() {
       setNumAfterDot("");
     }
     
-    
+    console.log(operand1.length);
   }
   
   
@@ -74,7 +74,7 @@ function App() {
     
     if (percent === "%" && operator === "") {
       setOperand1(Number(operand1) / 100).toString()
-      return
+      return;
     }
     
 
