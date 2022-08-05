@@ -8,11 +8,13 @@ import { useState } from 'react'
 
 
 function App() {
-  const [operand1, setOperand1] = useState("0")
-  const [operand2, setOperand2] = useState("")
-  const [operator, setOperator] = useState("")
-  const [numAfterDot, setNumAfterDot] = useState("")
-  const [percent, setPercent] = useState("")
+  const [operand1, setOperand1] = useState("0");
+  const [operand2, setOperand2] = useState("");
+  const [operator, setOperator] = useState("");
+  const [numAfterDot, setNumAfterDot] = useState("");
+  const [percent, setPercent] = useState("");
+
+
   function allClear() {
     setOperand1("0");
     setOperand2("");
@@ -26,7 +28,7 @@ function App() {
 
   function btnDotClickHandler(sign) {
     if (sign === ".") {
-      setNumAfterDot(sign)
+      setNumAfterDot(sign);
     }
   }
 
@@ -49,12 +51,13 @@ function App() {
       setOperand2((operand2 + "." + num).toString());
       setNumAfterDot("");
     }
-    if (operand1.length >= 8) {
-      setOperand1(operand1)
-      return;
+
+    if (operand1.length === 9) {
+      setOperand1(operand1);
+      return; 
     }
   }
-  // console.log(operand1.length);
+  console.log(operand2.length);
   console.log(operand1);
   
   
@@ -65,20 +68,20 @@ function App() {
 
   function operatorClickHandler(oper) {
     if (operator === "") {
-      setOperator(oper)
+      setOperator(oper);
     } else {
-      equallyClickHandler()
-      setOperator(oper)
+      equallyClickHandler();
+      setOperator(oper);
     }
 
   }
   function contentClickHandler(content) {
     if (content === "%") {
-      setPercent("%")
+      setPercent("%");
     }
     
     if (percent === "%" && operator === "") {
-      setOperand1(Number(operand1) / 100).toString()
+      setOperand1(Number(operand1) / 100);
       return;
     }
     
@@ -95,47 +98,47 @@ function App() {
 
   function equallyClickHandler() {
     if (operator === "+") {
-      setOperand1(Number(operand1) + Number(operand2))
+      setOperand1(Number(operand1) + Number(operand2));
       setOperator("")
       setOperand2("")
       setPercent("")
     } 
 
     if (operator === "+" && percent === "%") {
-      setOperand1(Number(operand1) + Number(operand1) * Number(operand2)/ 100).toString()
-      setOperator("")
-      setOperand2("")
-      setPercent("")
+      setOperand1(Number(operand1) + Number(operand1) * Number(operand2)/ 100); 
+      setOperator("");
+      setOperand2("");
+      setPercent("");
     }
     if (operator === "-") {
-      setOperand1(Number(operand1) - Number(operand2))
-      setOperator("")
-      setOperand2("")
-      setPercent("")
+      setOperand1(Number(operand1) - Number(operand2));
+      setOperator("");
+      setOperand2("");
+      setPercent("");
     }
     if (operator === "-" && percent === "%") {
-      setOperand1(Number(operand1) - Number(operand1) * Number(operand2) / 100).toString()
-      setOperator("")
-      setOperand2("")
-      setPercent("")
+      setOperand1(Number(operand1) - Number(operand1) * Number(operand2) / 100);
+      setOperator("");
+      setOperand2("");
+      setPercent("");
     }
 
     if (operator === "x") {
-      setOperand1(Number(operand1) * Number(operand2))
-      setOperator("")
-      setOperand2("")
+      setOperand1(Number(operand1) * Number(operand2));
+      setOperator("");
+      setOperand2("");
     }
 
     if (operator === "/") {
       if (operand2 === "0") {
         setOperand2("Error");
-        setOperand1("")
-        setOperator("")
+        setOperand1("");
+        setOperator("");
         return;
       }
-      setOperand1(Number(operand1) / Number(operand2))
-      setOperator("")
-      setOperand2("")
+      setOperand1(Number(operand1) / Number(operand2));
+      setOperator("");
+      setOperand2("");
     }
 
   }
