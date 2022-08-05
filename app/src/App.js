@@ -49,9 +49,14 @@ function App() {
       setOperand2((operand2 + "." + num).toString());
       setNumAfterDot("");
     }
-    
-    console.log(operand1.length);
+    if (operand1.length >= 8) {
+      setOperand1(operand1)
+      return;
+    }
   }
+  // console.log(operand1.length);
+  console.log(operand1);
+  
   
   
 
@@ -143,6 +148,7 @@ function App() {
           {/* <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
           <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div> */}
           <div className="current-operand">{operand1}{operator}{operand2}{percent}</div>
+          
         </CalcScreen>
         <Btns btnNumClickHandler={btnNumClickHandler}
           allClear={allClear}
