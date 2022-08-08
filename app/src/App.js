@@ -103,7 +103,7 @@ function App() {
 
   function equallyClickHandler() {
     if (operator === "+") {
-      setOperand1(Number(operand1) + Number(operand2));
+      setOperand1((Number(operand1) + Number(operand2)).toString().slice(0, 9));
       setOperator("")
       setOperand2("")
       setPercent("")
@@ -111,13 +111,13 @@ function App() {
     } 
 
     if (operator === "+" && percent === "%") {
-      setOperand1(Number(operand1) + Number(operand1) * Number(operand2)/ 100); 
+      setOperand1((Number(operand1) + Number(operand1) * Number(operand2) / 100).toString().slice(0, 9)); 
       setOperator("");
       setOperand2("");
       setPercent("");
     }
     if (operator === "-") {
-      setOperand1(Number(operand1) - Number(operand2));
+      setOperand1((Number(operand1) - Number(operand2)).toString().slice(0, 9));
       setOperator("");
       setOperand2("");
       setPercent("");
@@ -130,7 +130,7 @@ function App() {
     }
 
     if (operator === "x") {
-      setOperand1(Number(operand1) * Number(operand2));
+      setOperand1((Number(operand1) * Number(operand2)).toString().slice(0, 9));
       setOperator("");
       setOperand2("");
     }
@@ -142,12 +142,12 @@ function App() {
         setOperator("");
         return;
       }
-      setOperand1(Number(operand1) / Number(operand2));
+      setOperand1((Number(operand1) / Number(operand2)).toString().slice(0, 9));
       setOperator("");
       setOperand2("");
     }
     
-
+console.log(operand1);
   }
 
 
