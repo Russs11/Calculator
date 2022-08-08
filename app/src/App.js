@@ -35,8 +35,16 @@ function App() {
   function btnNumClickHandler(num) {
     if (operator === "") {
       setOperand1(parseFloat(operand1 + num).toString());
+      if (operand1.length === 9) {
+        setOperand1(operand1);
+        return;
+      }
     } else if (operator !== "") {
       setOperand2(parseFloat(operand2 + num).toString());
+      if (operand2.length === 9) {
+        setOperand2(operand2);
+        return;
+      }
     }
     
     if (numAfterDot === "." && operator === "") {
@@ -52,10 +60,7 @@ function App() {
       setNumAfterDot("");
     }
 
-    if (operand1.length === 9) {
-      setOperand1(operand1);
-      return; 
-    }
+   
   }
   console.log(operand2.length);
   console.log(operand1);
@@ -102,6 +107,7 @@ function App() {
       setOperator("")
       setOperand2("")
       setPercent("")
+      
     } 
 
     if (operator === "+" && percent === "%") {
@@ -140,6 +146,7 @@ function App() {
       setOperator("");
       setOperand2("");
     }
+    
 
   }
 
@@ -147,12 +154,12 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <CalcScreen>
-          {/* <div className="previous-operand">{operator ? operand1 + operator : ""}</div>
-          <div className="current-operand">{(!operator ? operand1 : operand2 + percent)} </div> */}
-          <div className="current-operand">{operand1}{operator}{operand2}{percent}</div>
-          
-        </CalcScreen>
+        <CalcScreen operand1={operand1}
+          operand2={operand2}
+          operator={operator}
+          percent={percent}
+        /> 
+        
         <Btns btnNumClickHandler={btnNumClickHandler}
           allClear={allClear}
           operatorClickHandler={operatorClickHandler}
