@@ -147,7 +147,8 @@ function App() {
       setOperand2("");
     }
     
-console.log(operand1);
+    // console.log(operand1);
+    console.log(operand1.length);
   }
 
 
