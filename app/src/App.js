@@ -126,7 +126,7 @@ function App() {
       // setOperator("+")
       // setOperand2("")
       // setPercent("")
-      good((Number(operand1) + Number(operand2)).toString().slice(0, 9))
+      good((Number(operand1) + Number(operand2)).toString().slice(0, 9));
     } 
 
 
@@ -143,7 +143,7 @@ function App() {
       // setOperator("");
       // setOperand2("");
       // setPercent("");
-      good(Number(operand1) - Number(operand2)).toString().slice(0, 9)
+      good((Number(operand1) - Number(operand2)).toString().slice(0, 9));
     }
     if (operator === "-" && operand1 !== "" && operand2 !== "") {
       // setOperand1((Number(operand1) - Number(operand2)).toString().slice(0, 9));
@@ -158,7 +158,7 @@ function App() {
       // setOperator("");
       // setOperand2("");
       // setPercent("");
-      good(Number(operand1) - Number(operand1) * Number(operand2) / 100).toString().slice(0, 9);
+      good((Number(operand1) - Number(operand1) * Number(operand2) / 100).toString().slice(0, 9));
     }
 
     if (operator === "x" && operand1 === "" && operand2 === "") {
@@ -166,7 +166,7 @@ function App() {
       // setValue((Number(operand1) * Number(operand2)).toString().slice(0, 9));
       // setOperator("");
       // setOperand2("");
-      good((Number(operand1) * Number(operand2)).toString().slice(0, 9))
+      good((Number(operand1) * Number(operand2)).toString().slice(0, 9));
     }
     if (operator === "x" && operand1 !== "" && operand2 !== "") {
       // setOperand1((Number(operand1) * Number(operand2)).toString().slice(0, 9));
