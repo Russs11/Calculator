@@ -34,8 +34,13 @@ function App() {
 
 
   function btnDotClickHandler(sign) {
-    if (sign === ".") {
+    if (sign === "." && operand1) {
       setNumAfterDot(sign);
+      setValue(operand1 + ".");
+    }
+    if (sign === "." && operand2) {
+      setNumAfterDot(sign);
+      setValue(operand2 + ".");
     }
   }
 
