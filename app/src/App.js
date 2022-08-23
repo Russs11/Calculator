@@ -24,7 +24,7 @@ function App() {
     setValue("0")
   }
 
-  function good(value) {
+  function defaultOperations(value) {
     setOperand1(value);
     setValue(value);
     setOperator("");
@@ -118,67 +118,39 @@ function App() {
 
   function equallyClickHandler() {
     if (operator === "+" && operand1 === "" && operand2 === "") {
-      // setOperand1((Number(operand1) + Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) + Number(operand2)).toString().slice(0, 9));
-      // setOperator("+")
-      // setOperand2("")
-      // setPercent("")
-      good((Number(operand1) + Number(operand2)).toString().slice(0, 9))
+
+      defaultOperations((Number(operand1) + Number(operand2)).toString().slice(0, 9).replace(/0*$/, ""));
     } 
     if (operator === "+" && operand1 !== "" && operand2 !== "") {
-      // setOperand1((Number(operand1) + Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) + Number(operand2)).toString().slice(0, 9));
-      // setOperator("+")
-      // setOperand2("")
-      // setPercent("")
-      good((Number(operand1) + Number(operand2)).toString().slice(0, 9));
+      
+      defaultOperations((Number(operand1) + Number(operand2)).toString().slice(0, 9));
     } 
 
 
     if (operator === "+" && percent === "%") {
-      // setOperand1((Number(operand1) + Number(operand1) * Number(operand2) / 100).toString().slice(0, 9)); 
-      // setOperator("");
-      // setOperand2("");
-      // setPercent("");
-      good((Number(operand1) + Number(operand1) * Number(operand2) / 100).toString().slice(0, 9));
+      
+      defaultOperations((Number(operand1) + Number(operand1) * Number(operand2) / 100).toString().slice(0, 9));
     }
     if (operator === "-" && operand1 === "" && operand2 === "") {
-      // setOperand1((Number(operand1) - Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) - Number(operand2)).toString().slice(0, 9));
-      // setOperator("");
-      // setOperand2("");
-      // setPercent("");
-      good((Number(operand1) - Number(operand2)).toString().slice(0, 9));
+      
+      defaultOperations((Number(operand1) - Number(operand2)).toString().slice(0, 9));
     }
     if (operator === "-" && operand1 !== "" && operand2 !== "") {
-      // setOperand1((Number(operand1) - Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) - Number(operand2)).toString().slice(0, 9));
-      // setOperator("");
-      // setOperand2("");
-      // setPercent("");
-      good((Number(operand1) - Number(operand2)).toString().slice(0, 9));
+     
+      defaultOperations((Number(operand1) - Number(operand2)).toString().slice(0, 9));
     }
     if (operator === "-" && percent === "%") {
-      // setOperand1(Number(operand1) - Number(operand1) * Number(operand2) / 100);
-      // setOperator("");
-      // setOperand2("");
-      // setPercent("");
-      good((Number(operand1) - Number(operand1) * Number(operand2) / 100).toString().slice(0, 9));
+     
+      defaultOperations((Number(operand1) - Number(operand1) * Number(operand2) / 100).toString().slice(0, 9));
     }
 
     if (operator === "x" && operand1 === "" && operand2 === "") {
-      // setOperand1((Number(operand1) * Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) * Number(operand2)).toString().slice(0, 9));
-      // setOperator("");
-      // setOperand2("");
-      good((Number(operand1) * Number(operand2)).toString().slice(0, 9));
+     
+      defaultOperations((Number(operand1) * Number(operand2)).toString().slice(0, 9));
     }
     if (operator === "x" && operand1 !== "" && operand2 !== "") {
-      // setOperand1((Number(operand1) * Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) * Number(operand2)).toString().slice(0, 9));
-      // setOperator("");
-      // setOperand2("");
-      good((Number(operand1) * Number(operand2)).toString().slice(0, 9))
+     
+      defaultOperations((Number(operand1) * Number(operand2)).toString().slice(0, 9))
     }
 
     if (operator === "/" && operand1 === "" && operand2 === "") {
@@ -188,11 +160,8 @@ function App() {
         setOperator("");
         return;
       }
-      // setOperand1((Number(operand1) / Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) / Number(operand2)).toString().slice(0, 9));
-      // setOperator("");
-      // setOperand2("");
-      good((Number(operand1) / Number(operand2)).toString().slice(0, 9));
+      
+      defaultOperations((Number(operand1) / Number(operand2)).toString().slice(0, 9));
     }
     if (operator === "/" && operand1 !== "" && operand2 !== "") {
       if (operand2 === "0") {
@@ -201,11 +170,8 @@ function App() {
         setOperator("");
         return;
       }
-      // setOperand1((Number(operand1) / Number(operand2)).toString().slice(0, 9));
-      // setValue((Number(operand1) / Number(operand2)).toString().slice(0, 9));
-      // setOperator("");
-      // setOperand2("");
-      good((Number(operand1) / Number(operand2)).toString().slice(0, 9))
+    
+      defaultOperations((Number(operand1) / Number(operand2)).toString().slice(0, 9))
     }
   }
 
