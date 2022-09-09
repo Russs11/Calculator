@@ -65,16 +65,16 @@ function App() {
     
     if (numAfterDot === "." && operator === "") {
       if (operand1.includes(".")) return;
-      setOperand1((operand1 + "." + num).toString());
-      setValue((operand1 + "." + num).toString());
+      setOperand1((operand1 + "." + num));
+      setValue((operand1 + "." + num));
       setNumAfterDot("");
       return;
     }
 
     if (numAfterDot === "." && operator !== "") {
       if (operand2.includes(".")) return;
-      setOperand2((operand2 + "." + num).toString());
-      setValue((operand2 + "." + num).toString());
+      setOperand2((operand2 + "." + num));
+      setValue((operand2 + "." + num));
       setNumAfterDot("");
     }
   }
@@ -119,11 +119,11 @@ function App() {
   function equallyClickHandler() {
     if (operator === "+" && operand1 === "" && operand2 === "") {
 
-      defaultOperations((Number(operand1) + Number(operand2)).toString().slice(0, 9).replace(/0*$/, ""));
+      defaultOperations((Number(operand1) + Number(operand2)).slice(0, 9).replace(/0*$/, ""));
     } 
     if (operator === "+" && operand1 !== "" && operand2 !== "") {
       
-      defaultOperations((Number(operand1) + Number(operand2)).toString().slice(0, 9));
+      defaultOperations((Number(operand1) + Number(operand2)).toString().slice(0, 9).replace(/0*$/, ""));
     } 
 
 
