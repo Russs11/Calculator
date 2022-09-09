@@ -92,6 +92,7 @@ function App() {
   function contentClickHandler(content) {
     if (content === "%") {
       setPercent("%");
+      setValue(Number(operand1) * Number(operand2) / 100).toString()
     }
     
     if (content === "%" && operator === "") {
